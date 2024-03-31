@@ -6,8 +6,7 @@
     height="80"
     width="80"
     alt="bookmark"
-    src="![image](https://github.com/lilitttaa/simple-bookmark/assets/128687876/21b15a68-f4ea-41d3-bedd-a466d0ac5152)
-"
+    src="https://github.com/lilitttaa/simple-bookmark/assets/128687876/0cb21579-8aff-45c8-a51d-f22c225ec4ae"
   />
 </a>
 
