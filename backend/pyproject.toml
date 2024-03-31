@@ -1,0 +1,22 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "bookmark-backend"
+version = "0.0.1"
+
+[tool.pytest.ini_options]
+addopts = [
+    "--import-mode=importlib",
+    "-s"
+]
+filterwarnings = [
+    "error",
+	"ignore::DeprecationWarning",
+]
+pythonpath = "src"
+markers = [
+    "slow: marks tests as slow (deselect with '-m \"not slow\"')",
+    "serial",
+]

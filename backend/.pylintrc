@@ -1,0 +1,8 @@
+[MESSAGE CONTROL]
+
+[MASTER]
+disable=missing-docstring
+[REPORTS]
+output-format=text
+enable=all
+fail-under=8.0

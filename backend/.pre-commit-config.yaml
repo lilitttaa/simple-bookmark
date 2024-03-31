@@ -1,0 +1,33 @@
+# See https://pre-commit.com for more information
+# See https://pre-commit.com/hooks.html for more hooks
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v3.2.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+  - repo: https://github.com/psf/black
+    rev: 22.10.0
+    hooks:
+      - id: black
+  - repo: local
+    hooks:
+      - id: pylint
+        name: "Run pylint"
+        entry: pylint
+        language: system
+        types: [python]
+        verbose: true
+        args: [
+            "--rcfile=.pylintrc",
+            # "--enable=all", # Link to your config file
+            "**/*.py",
+          ]
+  - repo: local
+    hooks:
+      - id: pytest
+        name: "Run test"
+        entry: bash -c 'pytest -m "not slow"'
+        language: system
+        verbose: true
