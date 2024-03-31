@@ -6,6 +6,7 @@
     "flask-dev": "set FLASK_DEBUG=1 && pip install -r backend/requirements.txt && python -m flask --app backend/src/backend/__init__ run -p 8000 --reload",
     "next-dev": "next dev",
     "dev": "concurrently \"npm run flask-dev\" \"npm run next-dev\"",
+    "test": "jest",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -26,5 +27,12 @@
     "tailwindcss": "3.4.3",
     "typescript": "5.4.3",
     "zustand": "^4.5.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.24.3",
+    "@babel/preset-env": "^7.24.3",
+    "@babel/preset-typescript": "^7.24.1",
+    "babel-jest": "^29.7.0",
+    "jest": "^29.7.0"
   }
 }
