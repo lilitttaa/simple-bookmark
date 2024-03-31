@@ -62,7 +62,6 @@ Simple Bookmark offers a self-hosted solution where users can deploy the applica
 
 - Front-end: Built with React and Redux for a responsive user interface and efficient state management.
 - Testing: Jest for unit and snapshot testing to maintain code quality.
-- Server-Side Rendering: Next.js is used for server-side rendering, providing faster page load times and improved SEO.
 - Back-end: Flask, a lightweight Python web framework, handles backend logic and API requests.
 
 ## Installation
