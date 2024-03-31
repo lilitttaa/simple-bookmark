@@ -1,8 +1,9 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import { BookmarkViewContainer } from '../component/BookmarkViewContainer'
 
-type BookmarkItem = {
+export type BookmarkItem = {
   id: string
   title: string
   url: string
@@ -12,7 +13,7 @@ const Home: React.FC = () => {
   const [title, setTitle] = useState('')
   const [url, setUrl] = useState('')
 
-  const [bookmarkItem, setBookmarkItem] = useState([
+  const [bookmarkItems, setBookmarkItems] = useState([
     {
       id: '1',
       title: 'Google',
@@ -26,17 +27,17 @@ const Home: React.FC = () => {
   ] as BookmarkItem[])
 
   const addBookmark = () => {
-    const newBookmarkItem = [...bookmarkItem]
+    const newBookmarkItem = [...bookmarkItems]
     newBookmarkItem.push({
-      id: String(bookmarkItem.length + 1),
+      id: String(bookmarkItems.length + 1),
       title,
       url
     })
-    setBookmarkItem(newBookmarkItem)
+    setBookmarkItems(newBookmarkItem)
   }
   const deleteBookmark = (id: string) => {
-    const newBookmarkItem = bookmarkItem.filter(bookmark => bookmark.id !== id)
-    setBookmarkItem(newBookmarkItem)
+    const newBookmarkItem = bookmarkItems.filter(bookmark => bookmark.id !== id)
+    setBookmarkItems(newBookmarkItem)
   }
   useEffect(() => {}, [])
   return (
@@ -64,35 +65,10 @@ const Home: React.FC = () => {
           Add
         </button>
       </div>
-      <div className='BoomarkViewContainer'>
-        <ul>
-          {bookmarkItem.map(item => {
-            return (
-              <div className='BookmarkViewItem'>
-                <li
-                  key={item.id}
-                  style={{
-                    display: 'inline'
-                  }}
-                >
-                  <a href={item.url}>{item.title}</a>
-                </li>
-
-                <button
-                  onClick={() => {
-                    deleteBookmark(item.id)
-                  }}
-                  style={{
-                    display: 'inline'
-                  }}
-                >
-                  Delete
-                </button>
-              </div>
-            )
-          })}
-        </ul>
-      </div>
+      <BookmarkViewContainer
+        bookmarkItems={bookmarkItems}
+        deleteBookmark={deleteBookmark}
+      ></BookmarkViewContainer>
     </div>
   )
 }
