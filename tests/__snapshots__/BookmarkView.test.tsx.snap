@@ -1,0 +1,64 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="BoomarkViewContainer"
+>
+  <ul>
+    <div
+      className="BookmarkViewItem"
+    >
+      <li
+        style={
+          {
+            "display": "inline",
+          }
+        }
+      >
+        <a
+          href="https://www.google.com"
+        >
+          Google
+        </a>
+      </li>
+      <button
+        onClick={[Function]}
+        style={
+          {
+            "display": "inline",
+          }
+        }
+      >
+        Delete
+      </button>
+    </div>
+    <div
+      className="BookmarkViewItem"
+    >
+      <li
+        style={
+          {
+            "display": "inline",
+          }
+        }
+      >
+        <a
+          href="https://www.yahoo.com"
+        >
+          Yahoo
+        </a>
+      </li>
+      <button
+        onClick={[Function]}
+        style={
+          {
+            "display": "inline",
+          }
+        }
+      >
+        Delete
+      </button>
+    </div>
+  </ul>
+</div>
+`;
