@@ -1,7 +1,7 @@
 import renderer from 'react-test-renderer'
 import { it, expect, afterEach } from '@jest/globals'
-import { BookmarkViewContainer } from '../src/Container/BookmarkView'
-import { cleanup, fireEvent, render } from '@testing-library/react'
+import { cleanup, fireEvent, render, screen } from '@testing-library/react'
+import { BookmarkViewContainer } from './BookmarkView'
 
 afterEach(cleanup)
 
@@ -29,7 +29,7 @@ it('renders correctly', () => {
 })
 
 it('click delete button', () => {
-  const { queryByLabelText, getByLabelText,getByText } = render(
+  render(
     <BookmarkViewContainer
       bookmarkItems={[
         {
@@ -41,7 +41,7 @@ it('click delete button', () => {
       deleteBookmark={() => {}}
     />
   )
-  const deleteButton = getByText('Delete')
+  const deleteButton = screen.getByText('Delete')
   fireEvent.click(deleteButton)
-  expect(queryByLabelText('Google')).toBeNull()
+  expect(screen.queryByLabelText('Google')).toBeNull()
 })

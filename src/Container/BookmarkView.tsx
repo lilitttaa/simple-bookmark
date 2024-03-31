@@ -1,5 +1,4 @@
-'use client'
-import { BookmarkItem } from '../app/page'
+import { BookmarkItem } from './HomeContainer'
 
 export function BookmarkViewContainer ({
   bookmarkItems,

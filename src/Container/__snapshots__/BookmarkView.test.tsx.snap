@@ -10,7 +10,7 @@ exports[`renders correctly 1`] = `
     >
       <li
         style={
-          {
+          Object {
             "display": "inline",
           }
         }
@@ -24,7 +24,7 @@ exports[`renders correctly 1`] = `
       <button
         onClick={[Function]}
         style={
-          {
+          Object {
             "display": "inline",
           }
         }
@@ -37,7 +37,7 @@ exports[`renders correctly 1`] = `
     >
       <li
         style={
-          {
+          Object {
             "display": "inline",
           }
         }
@@ -51,7 +51,7 @@ exports[`renders correctly 1`] = `
       <button
         onClick={[Function]}
         style={
-          {
+          Object {
             "display": "inline",
           }
         }
