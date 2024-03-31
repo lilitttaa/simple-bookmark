@@ -1,27 +1,98 @@
 'use client'
 
-import TodoForm from '@/component/TodoForm'
-import TodoItem from '@/component/TodoItem'
-import { useStore } from '@/store'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
+
+type BookmarkItem = {
+  id: string
+  title: string
+  url: string
+}
 
 const Home: React.FC = () => {
-  const todos = useStore(state => state.todos)
-  const fetchTodos = useStore(state => state.fetchTodos)
+  const [title, setTitle] = useState('')
+  const [url, setUrl] = useState('')
 
-  useEffect(() => {
-    fetchTodos()
-  }, [])
+  const [bookmarkItem, setBookmarkItem] = useState([
+    {
+      id: '1',
+      title: 'Google',
+      url: 'https://www.google.com'
+    },
+    {
+      id: '2',
+      title: 'Yahoo',
+      url: 'https://www.yahoo.com'
+    }
+  ] as BookmarkItem[])
 
+  const addBookmark = () => {
+    const newBookmarkItem = [...bookmarkItem]
+    newBookmarkItem.push({
+      id: String(bookmarkItem.length + 1),
+      title,
+      url
+    })
+    setBookmarkItem(newBookmarkItem)
+  }
+  const deleteBookmark = (id: string) => {
+    const newBookmarkItem = bookmarkItem.filter(bookmark => bookmark.id !== id)
+    setBookmarkItem(newBookmarkItem)
+  }
+  useEffect(() => {}, [])
   return (
-    <div className='container mx-auto max-w-md p-4'>
-      <TodoForm />
-      <h1 className='text-2xl font-bold mb-4'>Todo List</h1>
-      {todos.length === 0 ? (
-        <p className='text-center'>No Todos Found</p>
-      ) : (
-        todos.map(todo => <TodoItem key={todo.id} todo={todo} />)
-      )}
+    <div className='HomeContainer'>
+      <div className='AddBookmarkContainer'>
+        <input
+          type='text'
+          placeholder='Title'
+          onChange={e => setTitle(e.target.value)}
+          value={title}
+        />
+        <input
+          type='text'
+          placeholder='URL'
+          onChange={e => setUrl(e.target.value)}
+          value={url}
+        />
+        <button
+          onClick={() => {
+            addBookmark()
+            setTitle('')
+            setUrl('')
+          }}
+        >
+          Add
+        </button>
+      </div>
+      <div className='BoomarkViewContainer'>
+        <ul>
+          {bookmarkItem.map(item => {
+            return (
+              <div className='BookmarkViewItem'>
+                <li
+                  key={item.id}
+                  style={{
+                    display: 'inline'
+                  }}
+                >
+                  <a href={item.url}>{item.title}</a>
+                </li>
+
+                <button
+                  onClick={() => {
+                    deleteBookmark(item.id)
+                  }}
+                  style={{
+                    display: 'inline'
+                  }}
+                >
+                  Delete
+                </button>
+              </div>
+            )
+          })}
+        </ul>
+      </div>
     </div>
   )
 }
