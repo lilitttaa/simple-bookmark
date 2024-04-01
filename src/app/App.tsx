@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import './App.css'
 import { BrowserRouter, Link, Route, Routes } from 'react-router-dom'
-import Home from './container/HomeContainer'
+import Home from '../container/HomeContainer'
 
 const App: React.FC = () => {
   return (

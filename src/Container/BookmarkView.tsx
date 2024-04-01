@@ -1,29 +1,26 @@
-import { BookmarkItem } from './HomeContainer'
+import { useAppDispatch, useAppSelector } from '../store/hooks'
+import { deleteBookmark, selectBookmarks } from '../store/managerSlice'
 
-export function BookmarkViewContainer ({
-  bookmarkItems,
-  deleteBookmark
-}: {
-  bookmarkItems: BookmarkItem[]
-  deleteBookmark: (id: string) => void
-}) {
+export function BookmarkViewContainer () {
+  const bookmarks = useAppSelector(selectBookmarks)
+  const dispatch = useAppDispatch()
   return (
     <div className='BoomarkViewContainer'>
       <ul>
-        {bookmarkItems.map(item => (
-          <div className='BookmarkViewItem' key={item.id}>
+        {bookmarks.map(bookmark => (
+          <div className='BookmarkViewItem' key={bookmark.id}>
             <li
-              key={item.id}
+              key={bookmark.id}
               style={{
                 display: 'inline'
               }}
             >
-              <a href={item.url}>{item.title}</a>
+              <a href={bookmark.url}>{bookmark.title}</a>
             </li>
 
             <button
               onClick={() => {
-                deleteBookmark(item.id)
+                dispatch(deleteBookmark(bookmark.id))
               }}
               style={{
                 display: 'inline'
